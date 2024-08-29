@@ -1,0 +1,197 @@
+用法：jpackage <options>
+
+示例用法:
+--------------
+    生成适合主机系统的应用程序包：
+        对于模块化应用程序：
+            jpackage -n name -p modulePath -m moduleName/className
+        对于非模块化应用程序：
+            jpackage -i inputDir -n name \
+                --main-class className --main-jar myJar.jar
+        从预构建的应用程序映像：
+            jpackage -n name --app-image appImageDir
+    生成应用程序映像：
+        对于模块化应用程序：
+            jpackage --type app-image -n name -p modulePath \
+                -m moduleName/className
+        对于非模块化应用程序：
+            jpackage --type app-image -i inputDir -n name \
+                --main-class className --main-jar myJar.jar
+        要为 jlink 提供您自己的选项，请单独运行 jlink：
+            jlink --output appRuntimeImage -p modulePath -m moduleName \
+                --no-header-files [<additional jlink options>...]
+            jpackage --type app-image -n name \
+                -m moduleName/className --runtime-image appRuntimeImage
+    生成 Java 运行时程序包：
+        jpackage -n name --runtime-image <runtime-image>
+
+一般选项：
+  @<filename>
+          从文件读取选项和/或模式
+          可以多次使用此选项。
+  --type -t <type>
+          要创建的程序包的类型
+          有效值为：{"app-image", "exe", "msi"}
+          如果未指定此选项，则将创建与平台相关的
+          默认类型。
+  --app-version <version>
+          应用程序和/或程序包的版本
+  --copyright <copyright string>
+          应用程序的版权
+  --description <description string>
+          应用程序的说明
+  --help -h
+          将用法文本输出到输出流并退出，用法文本中包含
+          适用于当前平台的每个有效选项的列表和说明
+  --name -n <name>
+          应用程序和/或程序包的名称
+  --dest -d <destination path>
+          用来放置所生成的输出文件的路径
+          默认为当前的工作目录。
+          （绝对路径或相对于当前目录的路径）
+  --temp <file path>
+          用来创建临时文件的新目录或空白目录的路径
+          （绝对路径或相对于当前目录的路径）
+          如果指定，则在任务完成时将不删除临时目录，
+          必须手动删除临时目录
+          如果未指定，则将创建一个临时目录，
+          并在任务完成时删除该临时目录。
+  --vendor <vendor string>
+          应用程序的供应商
+  --verbose
+          启用详细的输出
+  --version
+          将产品版本输出到输出流并退出
+
+用来创建运行时映像的选项：
+  --add-modules <模块名称>[,<模块名称>...]
+          要添加的模块的逗号 (",") 分隔列表。
+          此模块列表连同主模块（如果指定）
+          将作为 --add-module 参数传递到 jlink。
+          如果未指定，则仅使用主模块（如果指定了 --module），
+          或者使用默认的模块集（如果指定了
+          --main-jar）。
+          可以多次使用此选项。
+  --module-path -p <module path>...
+          路径的 ; 分隔列表
+          每个路径要么是模块的目录，要么是
+          模块 jar 的路径。
+          （每个路径可以是绝对路径，也可以是相对于当前目录的路径）
+          可以多次使用此选项。
+  --jlink-options <jlink 选项>
+          要传递给 jlink 的选项列表（用空格分隔）
+          如果未指定，则默认为 "--strip-native-commands
+          --strip-debug --no-man-pages --no-header-files"
+          可以多次使用此选项。
+  --runtime-image <file path>
+          将复制到应用程序映像的预定义
+          运行时映像的路径
+          （绝对路径或相对于当前目录的路径）
+          如果未指定 --runtime-image，jpackage 将运行 jlink 以
+          使用如下选项创建运行时映像：
+          --strip-debug、--no-header-files、--no-man-pages 和
+          --strip-native-commands。
+
+用来创建应用程序映像的选项：
+  --icon <icon file path>
+          应用程序包图标的路径
+          （绝对路径或相对于当前目录的路径）
+  --input -i <input path>
+          包含要打包的文件的输入目录的路径
+          （绝对路径或相对于当前目录的路径）
+          输入目录中的所有文件将打包到
+          应用程序映像中。
+
+用来创建应用程序启动程序的选项：
+  --add-launcher <launcher name>=<file path>
+          启动程序的名称和包含关键字-值对列表的
+          属性文件的路径
+          （绝对路径或相对于当前目录的路径）
+          可以使用关键字 "module"、"main-jar"、"main-class"、
+          "arguments"、"java-options"、"app-version"、"icon" 和
+          "win-console"。
+          这些选项将添加到原始命令行选项中或者用来覆盖
+          原始命令行选项，以构建额外的替代启动程序。
+          将从命令行选项构建主应用程序启动程序。
+          可以使用此选项构建额外的替代启动程序，
+          可以多次使用此选项来构建
+          多个额外的启动程序。
+  --arguments <main class arguments>
+          在没有为启动程序提供命令行参数时，
+          要传递到主类的命令行参数
+          可以多次使用此选项。
+  --java-options <java options>
+          要传递到 Java 运行时的选项
+          可以多次使用此选项。
+  --main-class <class name>
+          要执行的应用程序主类的限定名称
+          只有在指定了 --main-jar 时才能使用此选项。
+  --main-jar <main jar file>
+          应用程序的主 JAR；包含主类
+          （指定为相对于输入路径的路径）
+          可以指定 --module 或 --main-jar 选项，但是不能同时指定
+          两者。
+  --module -m <module name>[/<main class>]
+          应用程序的主模块（以及可选的主类）
+          此模块必须位于模块路径中。
+          如果指定了此选项，则将在 Java 运行时映像中
+          链接主模块。可以指定 --module 或 --main-jar 选项，
+          但是不能同时指定这两个选项。
+
+用来创建应用程序启动程序的与平台相关的选项：
+  --win-console
+          为应用程序创建控制台启动程序，应当为
+          需要控制台交互的应用程序指定
+
+用来创建应用程序包的选项：
+  --app-image <file path>
+          用来构建可安装程序包的
+          预定义应用程序映像的位置
+          （绝对路径或相对于当前目录的路径）
+  --file-associations <file path>
+          包含关键字-值对列表的属性文件的路径
+          （绝对路径或相对于当前目录的路径）
+          可以使用关键字 "extension"、"mime-type"、"icon" 和 "description"
+          来描述此关联。
+          可以多次使用此选项。
+  --install-dir <file path>
+          默认安装位置下面的相对子路径
+  --license-file <file path>
+          许可证文件的路径
+          （绝对路径或相对于当前目录的路径）
+  --resource-dir <path>
+          覆盖 jpackage 资源的路径
+          可以通过向该目录中添加替代资源来覆盖 jpackage 的
+          图标、模板文件和其他资源。
+          （绝对路径或相对于当前目录的路径）
+  --runtime-image <file-path>
+          要安装的预定义运行时映像的路径
+          （绝对路径或相对于当前目录的路径）
+          在创建运行时程序包时需要使用选项。
+
+用来创建应用程序包的与平台相关的选项：
+  --win-dir-chooser
+          添加一个对话框以允许用户选择
+          产品的安装目录
+  --win-menu
+          将该应用程序添加到系统菜单中
+  --win-menu-group <menu group name>
+          启动该应用程序所在的菜单组
+  --win-per-user-install
+          请求基于每个用户执行安装
+  --win-shortcut
+          为应用程序创建桌面快捷方式
+  --win-upgrade-uuid <id string>
+          与此程序包升级相关联的 UUID
+
+
+windows 打包方法：
+1.安装Wix工具包，会自动添加到环境变量
+2.要用jdk-16.0.1_windows-x64_bin.exe 这个版本的JDK，其他版本会出现311错误代码，原因未知
+3.命令jpackage --name Laser --input lib --main-jar GUIFormExamples.jar --main-class examples.mainJFrame --icon ico.ico --win-dir-chooser --win-menu --win-shortcut --type msi --app-version 1.1.6 --copyright Laser --vendor Laser
+4.MAC打包命令：jpackage --name Laser --input lib --main-jar GUIFormExamples.jar --main-class examples.mainJFrame --icon tu_biao.icns  --app-version 1.1.6 --copyright Laser --vendor Laser
+
+笔记1：在mac下打包错误一直提示：jdk.jpackage.internal.PackagerException: java.io.IOException: Command [/usr/bin/codesign, --timestamp, --options, runtime, -s, Developer ID Application: 
+Kuo Jia (AJ2UD9ST92), --prefix, AJ2UD9ST92, -vvvv, --entitlements, /var/folders/xd/78w02v8s3tb5zv_q8zt7p3kh0000gn/T/jdk.jpackage12026216835123075430/config/Laser.entitlements,
+ /var/folders/xd/78w02v8s3tb5zv_q8zt7p3kh0000gn/T/jdk.jpackage12026216835123075430/images/image-2276867411517057667/Laser.app/Contents/app/kabeja-0.4.jar] exited with 1 code
+重新下载证书安装多次也无效，最后还是用以前保存在F盘的备份证书，只安装证书6和证书5，然后电脑连接网络后在打包就可以了，最终的原因可能是没有连接网络造成的

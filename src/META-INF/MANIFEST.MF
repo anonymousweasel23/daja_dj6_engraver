@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.10.8
+Created-By: 11.0.17+10-LTS-269 (Oracle Corporation)
+Class-Path: lib/kabeja-0.4.jar lib/jSerialComm-2.6.2.jar lib/AbsoluteLay
+ out.jar
+X-COMMENT: Main-Class will be added automatically by build
+Main-Class: examples.mainJFrame
+

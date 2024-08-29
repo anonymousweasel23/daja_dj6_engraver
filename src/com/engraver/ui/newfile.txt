@@ -1,0 +1,111 @@
+"Not connected" = "未连接";
+"Connected" = "已连接";
+"Photograph" = "拍照";
+"Photo gallery" = "照片库";
+"Material library" = "素材库";
+"Cancel" = "取消";
+"Custom Photo Gallery" = "自定照片库";
+"ABC made in China" = "中国制造ABC";
+"Laser engraving" = "激光雕刻机";
+"Carving mode:" = "雕刻模式:";
+"Please select Carving mode" = "请选择雕刻模式";
+"Black and White" = "黑白";
+"Gray scale" = "灰度";
+"Cutting" = "切割";
+"Weak power" = "弱功率";
+"Power" = "功率";
+"Depth" = "深度";
+"Cutting power" = "切割功率";
+"Cutting depth" = "切割深度";
+"Frequency" = "次数";
+"Accuracy" = "精度";
+"WiFi name" = "WIFI名称";
+"Wifi password" = "WIFI密码";
+"Clear WiFi" = "清除WIFI";
+"Start carving" = "开始雕刻";
+"Continue" = "继续";
+"Suspend" = "暂停";
+"Stop" = "停止";
+"Please connect the device first" = "请先连接雕刻机！";
+"Connection failed" = "雕刻失败！";
+"High" = "高";
+"Middle" = "中";
+"Low" = "低";
+"Modify" = "修改";
+"Are you sure modify the Wifi account info?" = "是否修改设备WIFI帐号信息";
+"Please select Carving Frequency" = "请选择雕刻质量";
+"Used" = "用时";
+"Processing..." = "处理中...";
+"%dh%dm%ds" = "%d小时%d分%d秒";
+"%dm%ds" = "%d分%d秒";
+"%ds" = "%d秒";
+
+
+"Not connected" = "Not connected";
+"Photograph" = "Photograph";
+"Photo gallery" = "Photo gallery";
+"Material library" = "Material library";
+"Cancel" = "Cancel";
+"Custom Photo Gallery" = "Custom Photo Gallery";
+"ABC made in China" = "ABC made in China";
+"Laser engraving" = "Laser engraving machine";
+"Carving mode:" = "Carving mode:";
+"Black and White" = "Black and white";
+"Gray scale" = "Gray scale";
+"Cutting" = "Cutting";
+"Weak power" = "Weak power";
+"Power" = "Power";
+"Depth" = "Depth";
+"Cutting power" = "Cutting power";
+"Cutting depth" = "Cutting depth";
+"Frequency" = "Times";
+"Accuracy" = "Accuracy";
+"WiFi name" = "Wifi name";
+"Wifi password" = "Wifi password";
+"Clear WiFi" = "Clear Wifi";
+"Start carving" = "Start carving";
+"Continue" = "Continue";
+"Suspend" = "Pause";
+"Stop" = "Stop";
+"Please select Carving mode" = "Please select sculpt mode";
+"Connected" = "Connected";
+"Please connect the device first" = "Please connect the carving machine first!";
+"Connection failed" = "Carving failed!";
+"High" = "high";
+"Middle" = "middle";
+"Low" = "low";
+"Modify" = "modify";
+"Are you sure modify the Wifi account info?" = "Modify WiFi account information";
+"Please select Carving Frequency" = "Please select the carving quality";
+"Used" = "Time used";
+"Processing..." = "Processing...";
+"%dh%dm%ds" = "%d小时%d分%d秒";
+"%dm%ds" = "%d分%d秒";
+"%ds" = "%d秒";
+
+
+
+Please select sculpt mode
+
+Connected
+
+Please connect the carving machine first!
+
+Carving failed!
+
+high
+
+in
+
+low
+
+modify
+
+Modify WiFi account information
+
+Please select the carving quality
+
+Time used
+
+Processing
+
